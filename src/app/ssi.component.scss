@@ -1,0 +1,26 @@
+:host {
+  font-family: "Lucida Console", Monaco;
+}
+
+.ssi-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ssi-header {
+  display: flex;
+  justify-content: center;
+
+  background: #20272a;
+  color: #fff;
+  padding: 25px;
+}
+
+.ssi-title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.ssi-body {
+  border: 1px solid #e3e9ea;
+}

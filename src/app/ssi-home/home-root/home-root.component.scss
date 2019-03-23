@@ -1,0 +1,20 @@
+.home-root {
+  display: flex;
+  flex-flow: row nowrap;
+  height: calc(100vh - 90px);
+  width: 100%;
+}
+
+.home-root-menu {
+  min-width: 15%;
+  overflow-x: auto;
+
+  border: 1px solid #e3e9ea;
+}
+
+.home-root-content {
+  flex-grow: 1;
+  overflow-x: auto;
+
+  border: 1px solid #e3e9ea;
+}
