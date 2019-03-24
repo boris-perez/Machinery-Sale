@@ -1,5 +1,6 @@
 import {IncidentTypeEnum} from '../enum/incident-type.enum';
 import {IncidentSeverityEnum} from '../enum/incident-severity.enum';
+import {Employee} from './Employee';
 
 export class Incident {
   id: string;
@@ -9,4 +10,5 @@ export class Incident {
   type: IncidentTypeEnum;
   severity: IncidentSeverityEnum;
   observation: string;
+  employee: Employee;
 }

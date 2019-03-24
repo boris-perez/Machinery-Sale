@@ -4,7 +4,7 @@
 
 import {Routes} from '@angular/router';
 import {IncidentRootComponent} from '../components/incident-root/incident-root.component';
-import {IncidentMainComponent} from '../components/incident-main/incident-main.component';
+import {IncidentListComponent} from '../components/incident-list/incident-list.component';
 
 
 export const INCIDENT_ROUTES_CONFIG: Routes = [
@@ -15,7 +15,10 @@ export const INCIDENT_ROUTES_CONFIG: Routes = [
       {
         path: '',
         children: [
-          {path: '', component: IncidentMainComponent},
+          {path: '', component: IncidentListComponent},
+          {path: 'create', component: IncidentListComponent},
+          {path: 'update', component: IncidentListComponent},
+          {path: 'reports', component: IncidentListComponent}
         ]
       },
       {path: '**', redirectTo: ''}

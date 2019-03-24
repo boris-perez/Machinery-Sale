@@ -1,3 +1,21 @@
-<article class="incident-root">
-  <router-outlet></router-outlet>
+<article class="shared-full-view incident-root">
+  <section class="incident-root-menu">
+    <div class="list-group">
+      <span class="list-group-item text-center incident-root-menu-item-header">
+        Operations
+      </span>
+      <a routerLink="/incident" class="list-group-item list-group-item-action incident-root-menu-item">Create an
+        incident</a>
+      <a routerLink="/incident" class="list-group-item list-group-item-action incident-root-menu-item">Update an
+        incident</a>
+      <a routerLink="/incident" class="list-group-item list-group-item-action incident-root-menu-item">Delete an
+        incident</a>
+      <a routerLink="/incident" class="list-group-item list-group-item-action incident-root-menu-item">Reports</a>
+    </div>
+  </section>
+  <section class="incident-root-body">
+    <router-outlet></router-outlet>
+  </section>
 </article>
+
+<img src="../../../assets/images/carousel-img1.jpg" alt="background" class="shared-full-view incident-root-bg">

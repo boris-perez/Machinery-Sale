@@ -1,0 +1,23 @@
+<article class="incident-list">
+
+  <table class="table table-striped incident-table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Incident</th>
+      <th scope="col">Type</th>
+      <th scope="col">Severity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let incident of incidents; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ incident.employee.firstName + ' ' + incident.employee.lastName }}</td>
+      <td>{{ incident.name }}</td>
+      <td>{{ incident.type }}</td>
+      <td>{{ incident.severity }}</td>
+    </tr>
+    </tbody>
+  </table>
+</article>

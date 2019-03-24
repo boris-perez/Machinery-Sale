@@ -11,15 +11,15 @@ import {IncidentRoutesModule} from './routes/incident-routes.module';
 import {IncidentsHttpService} from './services/incidents-http-service';
 
 import {SsiIncidentComponent} from './ssi-incident.component';
-import {IncidentMainComponent} from './components/incident-main/incident-main.component';
 import {IncidentRootComponent} from './components/incident-root/incident-root.component';
+import {IncidentListComponent} from './components/incident-list/incident-list.component';
 
 
 @NgModule({
   declarations: [
     SsiIncidentComponent,
     IncidentRootComponent,
-    IncidentMainComponent
+    IncidentListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,7 @@ import {IncidentRootComponent} from './components/incident-root/incident-root.co
   exports: [
     SsiIncidentComponent,
     IncidentRootComponent,
-    IncidentMainComponent
+    IncidentListComponent
   ],
   providers: [
     IncidentsHttpService
