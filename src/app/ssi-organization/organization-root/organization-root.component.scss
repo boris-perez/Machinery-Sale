@@ -1,7 +1,9 @@
+@import "./../../../assets/grid/ssi-ui-variables";
+
 .organization-root {
   display: flex;
   flex-flow: row nowrap;
-  height: calc(100vh - 90px);
+  height: calc(100vh - #{$navHeightWithPadding});
   width: 100%;
 }
 
