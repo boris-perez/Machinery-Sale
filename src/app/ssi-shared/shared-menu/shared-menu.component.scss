@@ -1,4 +1,4 @@
-@import "./../../../assets/grid/scc-ui-flexbox";
+@import "./../../../assets/grid/ssi-flexbox";
 .nav-container {
   width: 100%;
 }
@@ -41,8 +41,8 @@
   -o-transition: all .25s ease;
   transition: all .25s ease;
 
-  @include crossCenter();
-  @include mainCenter();
+  @include ssi-cross-center();
+  @include ssi-main-center();
 }
 
 .nav-container .nav-item:hover .nav-link {
@@ -82,5 +82,6 @@
   background-color: #20272a;;
   color: white;
 
-  @include crossCenter
+  @include ssi-cross-center();
 }
+

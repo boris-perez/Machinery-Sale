@@ -1,4 +1,4 @@
-@import "./../assets/grid/scc-ui-flexbox";
+@import "./../assets/grid/ssi-flexbox";
 
 .ssi-container {
   display: flex;
@@ -14,8 +14,8 @@
   color: #fff;
   padding: 25px;
 
-  @include crossCenter();
-  @include mainEnd();
+  @include ssi-cross-center();
+  @include ssi-main-end();
 }
 
 .ssi-title {
