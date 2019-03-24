@@ -5,6 +5,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {SharedMenuComponent} from './shared-menu/shared-menu.component';
+import {SsiRoutesModule} from '../ssi-routes/ssi-routes.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {SharedMenuComponent} from './shared-menu/shared-menu.component';
     SharedMenuComponent
   ],
   imports: [
+    SsiRoutesModule,
     BrowserModule,
     CommonModule,
   ],

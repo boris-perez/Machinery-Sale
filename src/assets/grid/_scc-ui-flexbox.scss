@@ -1,0 +1,109 @@
+
+/*Grid
+ */
+%scc-ui-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+%scc-ui-box {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+@mixin sccUIContainer {
+  @extend %scc-ui-container;
+
+}
+@mixin full {
+  max-width: 100%;
+}
+@mixin sccUIBox() {
+  @extend %scc-ui-box;
+
+}
+/*
+* This defines a flex container; inline or block depending on the given value. It enables a flex context for all its direct children.
+ */
+@mixin flex {
+  display   : flex;
+  flex-wrap : wrap;
+}
+
+///------------------\\//---------------------///
+/*
+* Justify-Content: This defines the alignment along the main axis.
+ */
+
+@mixin mainJustify {
+  @include flex;
+  justify-content : space-between;
+}
+
+@mixin mainDistribute {
+  @include flex;
+  justify-content : space-around;
+}
+
+@mixin mainCenter {
+  @include flex;
+  justify-content : center;
+}
+
+@mixin mainStart{
+  @include flex;
+  justify-content : flex-start;
+}
+
+@mixin mainEnd{
+  @include flex;
+  justify-content : flex-end;
+}
+
+
+///------------------\\//---------------------///
+/*
+* Align-Items: This defines the default behaviour for how flex items are laid out along the cross axis on the current line.
+* Align-Content: This aligns a flex container's lines within when there is extra space in the cross-axis, similar to how justify-content
+* aligns individual items within the main-axis.
+ */
+
+// At the start in the cross axis for CSSCore
+@mixin crossStart{
+  @include flex;
+  align-items   : flex-start;
+  align-content : flex-start;
+}
+
+// To the center on the cross axis for CSSCore
+@mixin crossCenter {
+  @include flex;
+  align-items   : center;
+  align-content : center;
+}
+
+// At the end on the cross axis for CSSCore
+@mixin crossEnd {
+  @include flex;
+  align-items   : flex-end;
+  align-content : flex-end;
+}
+
+// Container orientation
+@mixin flexReverse {
+  @include flex;
+  flex-direction : row-reverse;
+}
+
+@mixin flexColumn {
+  @include flex;
+  flex-direction : column;
+}
+
+
+@mixin flexColumnReverse {
+  @include flex;
+  flex-direction : column-reverse;
+}

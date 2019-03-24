@@ -6,7 +6,6 @@ import {Routes} from '@angular/router';
 import {HomeRootComponent} from '../home-root/home-root.component';
 
 import {HomeMainComponent} from '../home-main/home-main.component';
-import {HomeTestComponent} from '../home-test/home-test.component';
 
 export const HOME_ROUTES_CONFIG: Routes = [
   {
@@ -16,8 +15,7 @@ export const HOME_ROUTES_CONFIG: Routes = [
       {
         path: '',
         children: [
-          {path: 'main', component: HomeMainComponent},
-          {path: 'test', component: HomeTestComponent},
+          {path: 'main', component: HomeMainComponent}
         ]
       },
       {path: '**', redirectTo: ''}

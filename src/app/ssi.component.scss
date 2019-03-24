@@ -1,3 +1,5 @@
+@import "./../assets/grid/scc-ui-flexbox";
+
 .ssi-container {
   display: flex;
   flex-direction: column;
@@ -6,17 +8,33 @@
 .ssi-header {
   display: flex;
   justify-content: center;
+  width: 30%;
 
   background: #20272a;
   color: #fff;
   padding: 25px;
+
+  @include crossCenter();
+  @include mainEnd();
 }
 
 .ssi-title {
   font-size: 20px;
   font-weight: 400;
+  text-align: right;
 }
 
 .ssi-body {
   border: 1px solid #e3e9ea;
+}
+
+.ssi-top {
+  display: flex;
+  height: 60px;
+  width: 100%;
+
+  background-color: #20272a;
+}
+.ssi-menu{
+  width: 70%;
 }
