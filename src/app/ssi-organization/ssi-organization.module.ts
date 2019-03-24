@@ -4,14 +4,15 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {OrganizationRoutesModule} from './organization-routes/organization-routes.module';
+import {OrganizationRoutesModule} from './routes/organization-routes.module';
 
 import {SsiOrganizationComponent} from './ssi-organization.component';
 
-import {OrganizationRootComponent} from './organization-root/organization-root.component';
-import {OrganizationMainComponent} from './organization-main/organization-main.component';
-import {OrganizationDepartmentComponent} from './organization-department/organization-department.component';
-import {OrganizationChargeComponent} from './organization-charge/organization-charge.component';
+import {OrganizationRootComponent} from './components/organization-root/organization-root.component';
+import {OrganizationMainComponent} from './components/organization-main/organization-main.component';
+import {OrganizationDepartmentComponent} from './components/organization-department/organization-department.component';
+import {OrganizationPositionComponent} from './components/organization-position/organization-position.component';
+
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {OrganizationChargeComponent} from './organization-charge/organization-ch
     OrganizationRootComponent,
     OrganizationMainComponent,
     OrganizationDepartmentComponent,
-    OrganizationChargeComponent
+    OrganizationPositionComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,7 @@ import {OrganizationChargeComponent} from './organization-charge/organization-ch
     OrganizationRootComponent,
     OrganizationMainComponent,
     OrganizationDepartmentComponent,
-    OrganizationChargeComponent
+    OrganizationPositionComponent
 
   ]
 })
