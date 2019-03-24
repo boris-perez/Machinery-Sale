@@ -13,8 +13,8 @@ import {SsiComponent} from './ssi.component';
   ],
   imports: [
     BrowserModule,
-    SsiSharedModule,
     CommonModule,
+    SsiSharedModule,
     SsiRoutesModule,
   ],
   providers: [],

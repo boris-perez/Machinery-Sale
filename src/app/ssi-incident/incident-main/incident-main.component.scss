@@ -1,0 +1,22 @@
+@import "./../../../assets/grid/ssi-ui-variables";
+
+.incident-main {
+  display: flex;
+  flex-flow: row nowrap;
+  height: calc(100vh - #{$navHeightWithPadding});
+  width: 100%;
+}
+
+.incident-main-menu {
+  min-width: 15%;
+  overflow-x: auto;
+
+  border: 1px solid #e3e9ea;
+}
+
+.incident-main-content {
+  flex-grow: 1;
+  overflow-x: auto;
+
+  border: 1px solid #e3e9ea;
+}

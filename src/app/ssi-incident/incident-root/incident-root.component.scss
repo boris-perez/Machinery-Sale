@@ -1,0 +1,8 @@
+@import "./../../../assets/grid/ssi-ui-variables";
+
+.incident-root {
+  display: flex;
+  flex-flow: row nowrap;
+  height: calc(100vh - #{$navHeightWithPadding});
+  width: 100%;
+}
