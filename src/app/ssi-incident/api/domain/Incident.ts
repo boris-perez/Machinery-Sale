@@ -13,6 +13,23 @@ export class Incident {
 }
 
 export class IncidentDTO {
+
+  constructor(id: string,
+              name: string,
+              description: string,
+              date: Date,
+              type: IncidentTypeEnum,
+              severity: IncidentSeverityEnum,
+              employeeId: string) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.date = date;
+    this.type = type;
+    this.severity = severity;
+    this.employeeId = employeeId;
+  }
+
   id: string;
   name: string;
   description: string;

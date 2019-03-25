@@ -7,6 +7,9 @@ import {IncidentsHttpService} from '../../services/incidents-http-service';
 import {Subscription} from 'rxjs';
 import {unsubscribe} from '../../../ssi-shared/utils/unsubscribe.function';
 import {Incident} from '../../api/domain/Incident';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MODAL_INCIDENT} from '../incident-delete/incident-delete.component';
+import {IncidentDeleteService} from '../incident-delete/incident-delete.service';
 
 @Component({
   selector: 'incident-list',
@@ -19,7 +22,9 @@ export class IncidentListComponent implements OnInit, OnDestroy {
 
   private _incidentsSubscription: Subscription;
 
-  constructor(private _incidentsHttpService: IncidentsHttpService) {
+  constructor(private _incidentsHttpService: IncidentsHttpService,
+              private _incidentDeleteService: IncidentDeleteService,
+              private _modalService: NgbModal) {
     this.incidents = [];
   }
 
@@ -31,10 +36,24 @@ export class IncidentListComponent implements OnInit, OnDestroy {
     unsubscribe(this._incidentsSubscription);
   }
 
+  public onDeleteAction(event: any, incident: Incident): void {
+    const modalInstance = this._modalService.open(MODAL_INCIDENT.deleteIncident);
+    modalInstance.componentInstance.incident = incident;
+  }
+
   private _initialize(): void {
     this._incidentsSubscription = this._incidentsHttpService.doFindAll().subscribe(
       (incidents: Incident[]) => {
         this.incidents = incidents;
+      }
+    );
+
+    this._incidentsSubscription = this._incidentDeleteService.subject.asObservable().subscribe(
+      (incident: Incident) => {
+        const index = this.incidents.findIndex(value => value.id === incident.id);
+        if (index > -1) {
+          this.incidents.splice(index, 1);
+        }
       }
     );
   }

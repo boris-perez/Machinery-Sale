@@ -7,16 +7,19 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {IncidentRoutesModule} from './routes/incident-routes.module';
 
 import {IncidentsHttpService} from './services/incidents-http-service';
+import {EmployeesHttpService} from './services/employees-http-service';
+import {IncidentDeleteService} from './components/incident-delete/incident-delete.service';
 
 import {SsiIncidentComponent} from './ssi-incident.component';
 import {IncidentRootComponent} from './components/incident-root/incident-root.component';
 import {IncidentListComponent} from './components/incident-list/incident-list.component';
 import {IncidentCreateComponent} from './components/incident-create/incident-create.component';
-import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
-import {EmployeesHttpService} from './services/employees-http-service';
+import {IncidentDeleteComponent} from './components/incident-delete/incident-delete.component';
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import {EmployeesHttpService} from './services/employees-http-service';
     SsiIncidentComponent,
     IncidentRootComponent,
     IncidentListComponent,
-    IncidentCreateComponent
+    IncidentCreateComponent,
+    IncidentDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,17 +37,22 @@ import {EmployeesHttpService} from './services/employees-http-service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbDatepickerModule
+    NgbModule
   ],
   exports: [
     SsiIncidentComponent,
     IncidentRootComponent,
     IncidentListComponent,
-    IncidentCreateComponent
+    IncidentCreateComponent,
+    IncidentDeleteComponent
   ],
   providers: [
     IncidentsHttpService,
-    EmployeesHttpService
+    EmployeesHttpService,
+    IncidentDeleteService
+  ],
+  entryComponents: [
+    IncidentDeleteComponent
   ]
 })
 export class SsiIncidentModule {
