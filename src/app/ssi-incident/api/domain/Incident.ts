@@ -14,14 +14,12 @@ export class Incident {
 
 export class IncidentDTO {
 
-  constructor(id: string,
-              name: string,
+  constructor(name: string,
               description: string,
               date: Date,
               type: IncidentTypeEnum,
               severity: IncidentSeverityEnum,
               employeeId: string) {
-    this.id = id;
     this.name = name;
     this.description = description;
     this.date = date;

@@ -3,6 +3,10 @@ import {EmployeesHttpService} from './ssi-incident/services/employees-http-servi
 import {Subscription} from 'rxjs';
 import {Employee, EmployeeDTO} from './ssi-incident/api/domain/Employee';
 import {unsubscribe} from './ssi-shared/utils/unsubscribe.function';
+import {Incident, IncidentDTO} from './ssi-incident/api/domain/Incident';
+import {IncidentTypeEnum} from './ssi-incident/api/enum/incident-type.enum';
+import {IncidentSeverityEnum} from './ssi-incident/api/enum/incident-severity.enum';
+import {IncidentsHttpService} from './ssi-incident/services/incidents-http-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +15,20 @@ export class LoadDummyEmployeesService implements OnDestroy {
 
   private _employeesHttpServiceSubscription: Subscription;
   private _employeesSubscription: Subscription;
+  private _incidentsSubscription: Subscription;
 
   private _dummyEmployees: EmployeeDTO[];
+  private _dummyIncidents: IncidentDTO[];
 
-  constructor(private _employeesHttpService: EmployeesHttpService) {
+  constructor(private _employeesHttpService: EmployeesHttpService,
+              private _incidentHttpService: IncidentsHttpService) {
     this._initialize();
   }
 
   public ngOnDestroy(): void {
     unsubscribe(this._employeesHttpServiceSubscription);
     unsubscribe(this._employeesSubscription);
+    unsubscribe(this._incidentsSubscription);
   }
 
   private _initialize(): void {
@@ -38,10 +46,42 @@ export class LoadDummyEmployeesService implements OnDestroy {
         if (employees.length <= 1) {
           this._dummyEmployees.forEach(
             (employeeDTO: EmployeeDTO) => {
-              this._employeesSubscription = this._employeesHttpService.doInsert(employeeDTO).subscribe();
+              this._employeesSubscription = this._employeesHttpService.doInsert(employeeDTO).subscribe(
+                (employee: Employee) => {
+                  this._registerDummyIncidents(employee);
+                }
+              );
             }
           );
         }
+      }
+    );
+  }
+
+  private _registerDummyIncidents(employee: Employee): void {
+    this._dummyIncidents = [
+      new IncidentDTO(
+        'Injury',
+        'low Injury in neck',
+        new Date(),
+        IncidentTypeEnum.SLIGHT_INJURY,
+        IncidentSeverityEnum.LOW,
+        employee.id),
+      new IncidentDTO(
+        'Fracture',
+        'Arm fracture',
+        new Date('2015-01-01'),
+        IncidentTypeEnum.FRACTURE,
+        IncidentSeverityEnum.HIGH,
+        employee.id)
+    ];
+
+    this._dummyIncidents.forEach(
+      (dummyIncidentDTO: IncidentDTO) => {
+        this._incidentsSubscription = this._incidentHttpService.doInsert(dummyIncidentDTO).subscribe(
+          (incident: Incident) => {
+          }
+        );
       }
     );
   }

@@ -101,7 +101,6 @@ export class IncidentUpdateComponent implements OnInit, OnDestroy {
           this.incident = incident;
           const date = new Date(incident.date);
           const incidentDTO = new IncidentDTO(
-            incident.id,
             incident.name,
             incident.description,
             date,
