@@ -15,6 +15,8 @@ import {SsiIncidentComponent} from './ssi-incident.component';
 import {IncidentRootComponent} from './components/incident-root/incident-root.component';
 import {IncidentListComponent} from './components/incident-list/incident-list.component';
 import {IncidentCreateComponent} from './components/incident-create/incident-create.component';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {EmployeesHttpService} from './services/employees-http-service';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import {IncidentCreateComponent} from './components/incident-create/incident-cre
     IncidentRoutesModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbDatepickerModule
   ],
   exports: [
     SsiIncidentComponent,
@@ -39,7 +42,8 @@ import {IncidentCreateComponent} from './components/incident-create/incident-cre
     IncidentCreateComponent
   ],
   providers: [
-    IncidentsHttpService
+    IncidentsHttpService,
+    EmployeesHttpService
   ]
 })
 export class SsiIncidentModule {

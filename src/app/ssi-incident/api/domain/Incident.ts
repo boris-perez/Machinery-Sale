@@ -9,7 +9,6 @@ export class Incident {
   date: Date;
   type: IncidentTypeEnum;
   severity: IncidentSeverityEnum;
-  observation: string;
   employee: Employee;
 }
 
@@ -20,6 +19,5 @@ export class IncidentDTO {
   date: Date;
   type: IncidentTypeEnum;
   severity: IncidentSeverityEnum;
-  observation: string;
   employeeId: string;
 }
