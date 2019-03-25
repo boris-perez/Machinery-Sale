@@ -25,6 +25,7 @@ import {IncidentListComponent} from './components/incident-list/incident-list.co
 import {IncidentCreateComponent} from './components/incident-create/incident-create.component';
 import {IncidentDeleteComponent} from './components/incident-delete/incident-delete.component';
 import {IncidentUpdateComponent} from './components/incident-update/incident-update.component';
+import {IncidentReportsComponent} from './components/incident-reports/incident-reports.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {IncidentUpdateComponent} from './components/incident-update/incident-upd
     IncidentListComponent,
     IncidentCreateComponent,
     IncidentDeleteComponent,
-    IncidentUpdateComponent
+    IncidentUpdateComponent,
+    IncidentReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {IncidentUpdateComponent} from './components/incident-update/incident-upd
     IncidentListComponent,
     IncidentCreateComponent,
     IncidentDeleteComponent,
-    IncidentUpdateComponent
+    IncidentUpdateComponent,
+    IncidentReportsComponent
   ],
   providers: [
     IncidentsHttpService,
@@ -63,7 +66,8 @@ import {IncidentUpdateComponent} from './components/incident-update/incident-upd
     IncidentCreateService
   ],
   entryComponents: [
-    IncidentDeleteComponent
+    IncidentDeleteComponent,
+    IncidentReportsComponent
   ]
 })
 export class SsiIncidentModule {

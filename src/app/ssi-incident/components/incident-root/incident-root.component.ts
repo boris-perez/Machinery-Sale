@@ -8,6 +8,8 @@ import {IncidentsHttpService} from '../../services/incidents-http-service';
 import {Incident} from '../../api/domain/Incident';
 import {IncidentDeleteService} from '../../services/incident-delete.service';
 import {IncidentCreateService} from '../../services/incident-create.service';
+import {MODAL_INCIDENT} from '../incident-delete/incident-delete.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'incident-root',
@@ -23,7 +25,8 @@ export class IncidentRootComponent implements OnInit {
   constructor(private _incidentReportService: IncidentReportService,
               private _incidentHttpService: IncidentsHttpService,
               private _incidentDeleteService: IncidentDeleteService,
-              private _incidentCreateService: IncidentCreateService) {
+              private _incidentCreateService: IncidentCreateService,
+              private _modalService: NgbModal) {
     this.disabledReports = true;
 
   }
@@ -33,7 +36,7 @@ export class IncidentRootComponent implements OnInit {
   }
 
   public onReportAction(event: any): void {
-    this._incidentReportService.subject.next();
+    this._modalService.open(MODAL_INCIDENT.reportIncident);
   }
 
   private _initialize(): void {

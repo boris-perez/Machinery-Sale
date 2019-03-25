@@ -9,6 +9,7 @@ import {unsubscribe} from '../../../ssi-shared/utils/unsubscribe.function';
 import {Incident} from '../../api/domain/Incident';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {IncidentDeleteService} from '../../services/incident-delete.service';
+import {IncidentReportsComponent} from '../incident-reports/incident-reports.component';
 
 @Component({
   selector: 'incident-delete',
@@ -46,5 +47,6 @@ export class IncidentDeleteComponent implements OnInit, OnDestroy {
 }
 
 export const MODAL_INCIDENT = {
-  deleteIncident: IncidentDeleteComponent
+  deleteIncident: IncidentDeleteComponent,
+  reportIncident: IncidentReportsComponent
 };

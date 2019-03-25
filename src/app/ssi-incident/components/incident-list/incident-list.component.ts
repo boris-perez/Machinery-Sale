@@ -12,7 +12,7 @@ import {MODAL_INCIDENT} from '../incident-delete/incident-delete.component';
 import {IncidentDeleteService} from '../../services/incident-delete.service';
 import {IncidentUpdateService} from '../../services/incident-update.service';
 import {Router} from '@angular/router';
-import {ExportAsConfig, ExportAsService} from 'ngx-export-as';
+import {ExportAsConfig, ExportAsService, SupportedExtensions} from 'ngx-export-as';
 import {IncidentReportService} from '../../services/incident-report.service';
 
 @Component({
@@ -27,11 +27,6 @@ export class IncidentListComponent implements OnInit, OnDestroy {
   private _incidentsSubscription: Subscription;
   private _incidentsDeleteSubscription: Subscription;
   private _incidentsReportSubscription: Subscription;
-
-  private _exportAsConfig: ExportAsConfig = {
-    type: 'pdf',
-    elementId: 'table'
-  };
 
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _incidentDeleteService: IncidentDeleteService,
@@ -80,9 +75,14 @@ export class IncidentListComponent implements OnInit, OnDestroy {
     );
 
     this._incidentsReportSubscription = this._incidentReportService.subject.asObservable().subscribe(
-      () => {
+      (format: string) => {
         if (this.incidents.length > 0) {
-          this._exportAsService.save(this._exportAsConfig, 'incidents');
+          const exportAsConfig: ExportAsConfig = {
+            type: format as SupportedExtensions,
+            elementId: 'table'
+          };
+
+          this._exportAsService.save(exportAsConfig, 'incidents');
         }
       }
     );
