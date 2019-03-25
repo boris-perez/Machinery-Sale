@@ -27,7 +27,8 @@
              placeholder="yyyy-mm-dd"
              name="date"
              ngbDatepicker #d="ngbDatepicker"
-             readonly="true">
+             readonly="true"
+             (focus)="d.open()">
       <div class="input-group-append">
         <button class="btn btn-light fa fa-calendar" (click)="d.toggle()" type="button"></button>
       </div>
