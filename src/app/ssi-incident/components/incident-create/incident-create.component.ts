@@ -14,6 +14,7 @@ import {EmployeesHttpService} from '../../services/employees-http-service';
 import {Employee} from '../../api/domain/Employee';
 import {NgbDateAdapter, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import {IncidentCreateService} from '../../services/incident-create.service';
 
 @Component({
   selector: 'incident-create',
@@ -38,6 +39,7 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
 
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _employeesHttpService: EmployeesHttpService,
+              private _incidentCreateService: IncidentCreateService,
               private _formBuilder: FormBuilder,
               private _router: Router) {
     this._initForm();
@@ -66,6 +68,7 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
     this._incidentsSubscription = this._incidentsHttpService.doInsert(incidentDTO).subscribe(
       (incident: Incident) => {
         this.incident = incident;
+        this._incidentCreateService.subject.next(incident);
         this._router.navigate(['/incident/list']);
       }
     );

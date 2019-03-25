@@ -12,6 +12,8 @@ import {MODAL_INCIDENT} from '../incident-delete/incident-delete.component';
 import {IncidentDeleteService} from '../../services/incident-delete.service';
 import {IncidentUpdateService} from '../../services/incident-update.service';
 import {Router} from '@angular/router';
+import {ExportAsConfig, ExportAsService} from 'ngx-export-as';
+import {IncidentReportService} from '../../services/incident-report.service';
 
 @Component({
   selector: 'incident-list',
@@ -23,12 +25,21 @@ export class IncidentListComponent implements OnInit, OnDestroy {
   public incidents: Incident[];
 
   private _incidentsSubscription: Subscription;
+  private _incidentsDeleteSubscription: Subscription;
+  private _incidentsReportSubscription: Subscription;
+
+  private _exportAsConfig: ExportAsConfig = {
+    type: 'pdf',
+    elementId: 'table'
+  };
 
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _incidentDeleteService: IncidentDeleteService,
               private _incidentUpdateService: IncidentUpdateService,
+              private _incidentReportService: IncidentReportService,
               private _router: Router,
-              private _modalService: NgbModal) {
+              private _modalService: NgbModal,
+              private _exportAsService: ExportAsService,) {
     this.incidents = [];
   }
 
@@ -38,6 +49,8 @@ export class IncidentListComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     unsubscribe(this._incidentsSubscription);
+    unsubscribe(this._incidentsDeleteSubscription);
+    unsubscribe(this._incidentsReportSubscription);
   }
 
   public onUpdateAction(event: any, incident: Incident): void {
@@ -57,11 +70,19 @@ export class IncidentListComponent implements OnInit, OnDestroy {
       }
     );
 
-    this._incidentsSubscription = this._incidentDeleteService.subject.asObservable().subscribe(
+    this._incidentsDeleteSubscription = this._incidentDeleteService.subject.asObservable().subscribe(
       (incident: Incident) => {
         const index = this.incidents.findIndex(value => value.id === incident.id);
         if (index > -1) {
           this.incidents.splice(index, 1);
+        }
+      }
+    );
+
+    this._incidentsReportSubscription = this._incidentReportService.subject.asObservable().subscribe(
+      () => {
+        if (this.incidents.length > 0) {
+          this._exportAsService.save(this._exportAsConfig, 'incidents');
         }
       }
     );

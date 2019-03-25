@@ -10,11 +10,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {IncidentRoutesModule} from './routes/incident-routes.module';
+import {ExportAsModule} from 'ngx-export-as';
 
 import {IncidentsHttpService} from './services/incidents-http-service';
 import {EmployeesHttpService} from './services/employees-http-service';
 import {IncidentDeleteService} from './services/incident-delete.service';
 import {IncidentUpdateService} from './services/incident-update.service';
+import {IncidentReportService} from './services/incident-report.service';
+import {IncidentCreateService} from './services/incident-create.service';
 
 import {SsiIncidentComponent} from './ssi-incident.component';
 import {IncidentRootComponent} from './components/incident-root/incident-root.component';
@@ -40,7 +43,8 @@ import {IncidentUpdateComponent} from './components/incident-update/incident-upd
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ExportAsModule
   ],
   exports: [
     SsiIncidentComponent,
@@ -54,7 +58,9 @@ import {IncidentUpdateComponent} from './components/incident-update/incident-upd
     IncidentsHttpService,
     EmployeesHttpService,
     IncidentDeleteService,
-    IncidentUpdateService
+    IncidentUpdateService,
+    IncidentReportService,
+    IncidentCreateService
   ],
   entryComponents: [
     IncidentDeleteComponent

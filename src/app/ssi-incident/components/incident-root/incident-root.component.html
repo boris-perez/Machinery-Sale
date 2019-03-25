@@ -11,8 +11,11 @@
          routerLinkActive="incident-root-menu-item-active"
          class="list-group-item list-group-item-action incident-root-menu-item">Create an
         incident</a>
-      <a routerLink="/incident/reports"
-         class="list-group-item list-group-item-action incident-root-menu-item">Generate Report</a>
+      <button
+        class="list-group-item list-group-item-action incident-root-menu-item"
+        [disabled]="disabledReports"
+        (click)="onReportAction($event)">Generate Report
+      </button>
     </div>
   </section>
   <section class="incident-root-body">
