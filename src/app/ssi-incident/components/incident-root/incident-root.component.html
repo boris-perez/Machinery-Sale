@@ -4,14 +4,15 @@
       <span class="list-group-item text-center incident-root-menu-item-header">
         Operations
       </span>
-      <a routerLink="/incident/create" class="list-group-item list-group-item-action incident-root-menu-item">Create an
-        incident</a>
-      <a routerLink="/incident/update" class="list-group-item list-group-item-action incident-root-menu-item">Update an
-        incident</a>
-      <a routerLink="/incident/delete" class="list-group-item list-group-item-action incident-root-menu-item">Delete an
+      <a routerLink="/incident/list"
+         routerLinkActive="incident-root-menu-item-active"
+         class="list-group-item list-group-item-action incident-root-menu-item">Incidents</a>
+      <a routerLink="/incident/create"
+         routerLinkActive="incident-root-menu-item-active"
+         class="list-group-item list-group-item-action incident-root-menu-item">Create an
         incident</a>
       <a routerLink="/incident/reports"
-         class="list-group-item list-group-item-action incident-root-menu-item">Reports</a>
+         class="list-group-item list-group-item-action incident-root-menu-item">Generate Report</a>
     </div>
   </section>
   <section class="incident-root-body">

@@ -16,13 +16,13 @@ export const INCIDENT_ROUTES_CONFIG: Routes = [
       {
         path: '',
         children: [
-          {path: '', component: IncidentListComponent},
+          {path: 'list', component: IncidentListComponent},
           {path: 'create', component: IncidentCreateComponent},
           {path: 'update', component: IncidentListComponent},
           {path: 'reports', component: IncidentListComponent}
         ]
       },
-      {path: '**', redirectTo: ''}
+      {path: '**', redirectTo: 'list'}
     ]
   }
 ];
