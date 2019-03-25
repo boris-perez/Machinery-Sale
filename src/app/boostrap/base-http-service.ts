@@ -7,7 +7,7 @@ import {environment} from '../../environments/environment';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export abstract class BaseHttpService<T> extends HttpClient {
+export abstract class BaseHttpService<T, D> extends HttpClient {
 
   private _fullPath(): string {
     return environment.host + this.path();
@@ -23,7 +23,7 @@ export abstract class BaseHttpService<T> extends HttpClient {
     return this.get(this._fullPath() + '/' + id) as Observable<T[]>;
   }
 
-  public doInsert(body: T): Observable<T> {
+  public doInsert(body: D): Observable<T> {
     return this.post(this._fullPath(), body) as Observable<T>;
   }
 

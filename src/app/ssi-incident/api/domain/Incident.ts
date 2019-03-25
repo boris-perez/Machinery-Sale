@@ -12,3 +12,14 @@ export class Incident {
   observation: string;
   employee: Employee;
 }
+
+export class IncidentDTO {
+  id: string;
+  name: string;
+  description: string;
+  date: Date;
+  type: IncidentTypeEnum;
+  severity: IncidentSeverityEnum;
+  observation: string;
+  employeeId: string;
+}
