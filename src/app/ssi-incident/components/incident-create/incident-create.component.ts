@@ -13,6 +13,7 @@ import {IncidentSeverityEnum} from '../../api/enum/incident-severity.enum';
 import {EmployeesHttpService} from '../../services/employees-http-service';
 import {Employee} from '../../api/domain/Employee';
 import {NgbDateAdapter, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'incident-create',
@@ -35,7 +36,8 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
 
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _employeesHttpService: EmployeesHttpService,
-              private _formBuilder: FormBuilder) {
+              private _formBuilder: FormBuilder,
+              private _router: Router) {
     this._initForm();
 
     this.incidentTypes = Object.keys(IncidentTypeEnum);
@@ -56,6 +58,7 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
     this._incidentsSubscription = this._incidentsHttpService.doInsert(incidentDTO).subscribe(
       (incident: Incident) => {
         this.incident = incident;
+        this._router.navigate(['/incident']);
       }
     );
   }
