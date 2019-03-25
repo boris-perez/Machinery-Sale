@@ -9,7 +9,9 @@ import {unsubscribe} from '../../../ssi-shared/utils/unsubscribe.function';
 import {Incident} from '../../api/domain/Incident';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MODAL_INCIDENT} from '../incident-delete/incident-delete.component';
-import {IncidentDeleteService} from '../incident-delete/incident-delete.service';
+import {IncidentDeleteService} from '../../services/incident-delete.service';
+import {IncidentUpdateService} from '../../services/incident-update.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'incident-list',
@@ -24,6 +26,8 @@ export class IncidentListComponent implements OnInit, OnDestroy {
 
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _incidentDeleteService: IncidentDeleteService,
+              private _incidentUpdateService: IncidentUpdateService,
+              private _router: Router,
               private _modalService: NgbModal) {
     this.incidents = [];
   }
@@ -34,6 +38,11 @@ export class IncidentListComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     unsubscribe(this._incidentsSubscription);
+  }
+
+  public onUpdateAction(event: any, incident: Incident): void {
+    this._incidentUpdateService.subject.next(incident);
+    this._router.navigate(['/incident/update']);
   }
 
   public onDeleteAction(event: any, incident: Incident): void {

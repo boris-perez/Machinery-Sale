@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
 import {unsubscribe} from '../../../ssi-shared/utils/unsubscribe.function';
 import {Incident} from '../../api/domain/Incident';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {IncidentDeleteService} from './incident-delete.service';
+import {IncidentDeleteService} from '../../services/incident-delete.service';
 
 @Component({
   selector: 'incident-delete',

@@ -27,7 +27,7 @@ export abstract class BaseHttpService<T, D> extends HttpClient {
     return this.post(this._fullPath(), body) as Observable<T>;
   }
 
-  public doUpdate(id: string, body: T): Observable<T> {
+  public doUpdate(id: string, body: D): Observable<T> {
     return this.put(this._fullPath() + '/' + id, body) as Observable<T>;
   }
 

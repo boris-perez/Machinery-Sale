@@ -14,14 +14,15 @@ import {EmployeesHttpService} from '../../services/employees-http-service';
 import {Employee} from '../../api/domain/Employee';
 import {NgbDateAdapter, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import {IncidentUpdateService} from '../../services/incident-update.service';
 
 @Component({
-  selector: 'incident-create',
-  templateUrl: './incident-create.component.html',
-  styleUrls: ['./incident-create.component.scss'],
+  selector: 'incident-update',
+  templateUrl: './incident-update.component.html',
+  styleUrls: ['./incident-update.component.scss'],
   providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
-export class IncidentCreateComponent implements OnInit, OnDestroy {
+export class IncidentUpdateComponent implements OnInit, OnDestroy {
 
   public incidentFormGroup: FormGroup;
   public incident: Incident;
@@ -33,11 +34,14 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
   public incidentTypes: string[];
   public incidentSeverities: string[];
 
+  private _incidentsUpdateSubscription: Subscription;
   private _incidentsSubscription: Subscription;
   private _employeesSubscription: Subscription;
 
+
   constructor(private _incidentsHttpService: IncidentsHttpService,
               private _employeesHttpService: EmployeesHttpService,
+              private _incidentUpdateService: IncidentUpdateService,
               private _formBuilder: FormBuilder,
               private _router: Router) {
     this._initForm();
@@ -51,8 +55,10 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this._incidentUpdateService.subject.next(undefined);
     unsubscribe(this._incidentsSubscription);
     unsubscribe(this._employeesSubscription);
+    unsubscribe(this._incidentsUpdateSubscription);
   }
 
   public onSubmit(): void {
@@ -63,7 +69,7 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
     }
 
     const incidentDTO: IncidentDTO = this.incidentFormGroup.value;
-    this._incidentsSubscription = this._incidentsHttpService.doInsert(incidentDTO).subscribe(
+    this._incidentsSubscription = this._incidentsHttpService.doUpdate(this.incident.id, incidentDTO).subscribe(
       (incident: Incident) => {
         this.incident = incident;
         this._router.navigate(['/incident/list']);
@@ -86,6 +92,25 @@ export class IncidentCreateComponent implements OnInit, OnDestroy {
     this._employeesSubscription = this._employeesHttpService.doFindAll().subscribe(
       (employees: Employee[]) => {
         this.employees = employees;
+      }
+    );
+
+    this._incidentsUpdateSubscription = this._incidentUpdateService.subject.asObservable().subscribe(
+      (incident: Incident) => {
+        if (incident) {
+          this.incident = incident;
+          const incidentDTO = new IncidentDTO(
+            incident.id,
+            incident.name,
+            incident.description,
+            incident.date,
+            incident.type,
+            incident.severity,
+            incident.employee.id);
+          this.incidentFormGroup.patchValue(incidentDTO);
+        } else {
+          this._router.navigate(['incident/list']);
+        }
       }
     );
   }

@@ -13,13 +13,15 @@ import {IncidentRoutesModule} from './routes/incident-routes.module';
 
 import {IncidentsHttpService} from './services/incidents-http-service';
 import {EmployeesHttpService} from './services/employees-http-service';
-import {IncidentDeleteService} from './components/incident-delete/incident-delete.service';
+import {IncidentDeleteService} from './services/incident-delete.service';
+import {IncidentUpdateService} from './services/incident-update.service';
 
 import {SsiIncidentComponent} from './ssi-incident.component';
 import {IncidentRootComponent} from './components/incident-root/incident-root.component';
 import {IncidentListComponent} from './components/incident-list/incident-list.component';
 import {IncidentCreateComponent} from './components/incident-create/incident-create.component';
 import {IncidentDeleteComponent} from './components/incident-delete/incident-delete.component';
+import {IncidentUpdateComponent} from './components/incident-update/incident-update.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {IncidentDeleteComponent} from './components/incident-delete/incident-del
     IncidentRootComponent,
     IncidentListComponent,
     IncidentCreateComponent,
-    IncidentDeleteComponent
+    IncidentDeleteComponent,
+    IncidentUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -44,12 +47,14 @@ import {IncidentDeleteComponent} from './components/incident-delete/incident-del
     IncidentRootComponent,
     IncidentListComponent,
     IncidentCreateComponent,
-    IncidentDeleteComponent
+    IncidentDeleteComponent,
+    IncidentUpdateComponent
   ],
   providers: [
     IncidentsHttpService,
     EmployeesHttpService,
-    IncidentDeleteService
+    IncidentDeleteService,
+    IncidentUpdateService
   ],
   entryComponents: [
     IncidentDeleteComponent
