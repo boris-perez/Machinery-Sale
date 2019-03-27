@@ -1,5 +1,5 @@
 /**
- * @author alain quinones
+ * @author
  */
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';

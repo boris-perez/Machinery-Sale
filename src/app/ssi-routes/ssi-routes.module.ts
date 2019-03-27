@@ -1,5 +1,5 @@
 /**
- * @author alain quinones
+ * @author .
  */
 
 import {NgModule} from '@angular/core';
@@ -10,12 +10,13 @@ import {SsiOrganizationModule} from '../ssi-organization/ssi-organization.module
 import {SsiIncidentModule} from '../ssi-incident/ssi-incident.module';
 
 
+
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES_CONFIG),
     SsiHomeModule,
     SsiOrganizationModule,
-    SsiIncidentModule
+    SsiIncidentModule,
   ],
   exports: [RouterModule]
 })

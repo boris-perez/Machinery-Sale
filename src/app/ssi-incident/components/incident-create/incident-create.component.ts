@@ -1,5 +1,5 @@
 /**
- * @author alain quinones
+ * @author .
  */
 
 import {Component, OnDestroy, OnInit} from '@angular/core';

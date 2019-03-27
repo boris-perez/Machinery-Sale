@@ -1,5 +1,5 @@
 /**
- * @author alain.quinones
+ * @author .
  */
 
 import {NgModule} from '@angular/core';

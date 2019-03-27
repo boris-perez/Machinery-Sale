@@ -16,22 +16,22 @@
 .home-container {
   display: flex;
   width: 100%;
-  padding: 40px 20px;
+  padding: 5px 5px;
 
   @include ssi-main-center();
 }
 
 .home-content {
   display: flex;
-  width: 70%;
-  padding: 20px 10px;
+  width: 80%;
+  padding: 10px 10px;
 
   @include ssi-main-center();
 
 }
 
 .home-content-img {
-  width: 40%;
+  width: 30%;
 
 }
 

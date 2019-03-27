@@ -1,5 +1,5 @@
 /**
- * @author alain quinones
+ * @author .
  */
 import {Routes} from '@angular/router';
 import {SsiHomeComponent} from '../ssi-home/ssi-home.component';
